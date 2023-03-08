@@ -23,12 +23,12 @@ export function getBlogs(req, res) {
 // -~===========~- ADD -~===========~-
 
 export function addBlog(req, res) {
-  const { title, description, image, review } = req.body
-  if((title.length <1 || description.length <1 || image.length <1 || review.length <1 )) {
+  const { title, description, image, review, author } = req.body
+  if((title.length <1 || description.length <1 || image.length <1 || review.length <1 || author.length<1)) {
     res.status(500).json({message: "Inputs are too short!"})
     return
   }
-  const newBlog = { title, description, image, review, createdAt: new Date() }
+  const newBlog = { title, description, image, review, author, createdAt: new Date() }
   const db = dbConnect()
   db.collection(mongo_collection).insertOne(newBlog)
     .then(() => getBlogs(req, res))

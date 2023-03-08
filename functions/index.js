@@ -7,6 +7,8 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+app.get("/", (req, res) => res.send("🧑‍💻"))
+
 app.get("/blog", getBlogs)
 app.post("/blog", addBlog)
 app.patch("/blog/:blogId", updateBlog)
