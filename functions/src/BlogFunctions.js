@@ -24,7 +24,7 @@ export function getBlogs(req, res) {
 
 export function addBlog(req, res) {
   const { title, description, image, review, author, appleid, spotifyid } = req.body
-  if((title.length <1 || description.length <1 || image.length <1 || review.length <1 || author.length<1 || appleid>1 || spotifyid>1 )) {
+  if((title.length <1 || description.length <1 || image.length <1 || review.length <1 || author.length<1 || appleid<1 || spotifyid<1 )) {
     res.status(500).json({message: "Inputs are too short!"})
     return
   }
